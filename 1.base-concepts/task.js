@@ -1,5 +1,10 @@
 function solveEquation(a, b, c) {
   let arr;
+    let Discriminant = b * b - 4 * a * c;
+    
+
+    }
+
   // код для задачи №1 писать здесь
   return arr; // array
 }
