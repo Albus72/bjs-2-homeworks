@@ -28,21 +28,21 @@ function worker(arr) {
 
 function makeWork(arrOfArr, func) {
   let max = -Infinity;
-  if (func === worker) {
+  // if (func === worker) {
     for (let i = 0; i < arrOfArr.length; i++) {
-      const item = worker(arrOfArr[i]);
+      const item = func(arrOfArr[i]);
       if (item > max) {
         max = item;
       }    
     } 
   return max;   
-  } else if (func === worker2) {
-      for (let i = 0; i < arrOfArr.length; i++) {
-        const item = worker2(arrOfArr[i]);
-        max = item;
-      }    
-    }  
-  return max;
+  // } else if (func === worker2) {
+  //     for (let i = 0; i < arrOfArr.length; i++) {
+  //       const item = worker2(arrOfArr[i]);
+  //       max = item;
+  //     }    
+  //   }  
+  // return max;
 }
 
 // Задание 3
