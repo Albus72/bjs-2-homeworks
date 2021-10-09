@@ -28,12 +28,20 @@ function worker(arr) {
 
 function makeWork(arrOfArr, func) {
   let max = -Infinity;
-  for (let i = 0; i < arrOfArr.length; i++) {
-    const item = worker(arrOfArr[i]);
-    if (item > max) {
-      max = item;
-    }
-  }  
+  if (func === worker) {
+    for (let i = 0; i < arrOfArr.length; i++) {
+      const item = worker(arrOfArr[i]);
+      if (item > max) {
+        max = item;
+      }    
+    } 
+  return max;   
+  } else if (func === worker2) {
+      for (let i = 0; i < arrOfArr.length; i++) {
+        const item = worker2(arrOfArr[i]);
+        max = item;
+      }    
+    }  
   return max;
 }
 
@@ -51,4 +59,5 @@ function worker2(arr) {
     }
     diff = max - min;
   }
+  return diff;
 }
