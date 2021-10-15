@@ -15,8 +15,6 @@ Student.prototype.addMark = function(mark) {
   } else {
     this.marks.push(mark);
   }
-  // const summ = this.marks.reduce((sum, current) => sum + current, 0);
-  // const length = this.marks.length;
 }
 
 Student.prototype.addMarks = function(...mark) {
