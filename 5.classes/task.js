@@ -75,15 +75,24 @@ class Library {
         return this.books;
     }
 
-    findBookBy(argum, value) {
-        const book = this.books.find(item => this.book.name == value);
-        if (book != undefined) {
-            return book;
-        } else {
+    findBookBy(type, value) {
+        let key = String('item.' + type);
+        let book = this.books.find(item => eval(key) == value);
+        if (book == undefined) {
             return null;
-        }
-        
+        } else {
+            return book;
+        }   
     }
-
     
+    giveBookByName(bookName) {
+        let book = this.books.find(item => item.name == bookName);
+        if (book == undefined) {
+            return null;
+        } else {
+            let bookIndex = this.books.indexOf(book);
+            this.books.splice(bookIndex, 1)
+            return book;
+        }   
+    }
 }
