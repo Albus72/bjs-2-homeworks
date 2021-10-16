@@ -1,0 +1,3 @@
+function parseCount()
+
+function validateCount()
