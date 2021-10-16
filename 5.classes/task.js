@@ -70,23 +70,39 @@ class Library {
 
     addBook(book) {
         if (book.state > 30) {
-            this.books.push(book);    
+            if ( this.books === undefined) {
+                this.books = [book];
+              } else {
+                this.books.push(book);
+              }   
         }    
         return this.books;
     }
+    
+    // addBook(book) {
+    //     if (book.state > 30) {
+    //         this.books.push(book);    
+    //     }    
+    //     return this.books;
+    // }
 
     findBookBy(type, value) {
-        let key = String('item.' + type);
-        let book = this.books.find(item => eval(key) == value);
-        if (book == undefined) {
-            return null;
-        } else {
-            return book;
-        }   
-    }
+        const book = this.books.find(item => item[type] === value);
+        return book || null;
+      };
+    
+    // findBookBy(type, value) {
+    //     let key = String('item.' + type);
+    //     let book = this.books.find(item => eval(key) === value);
+    //     if (book == undefined) {
+    //         return null;
+    //     } else {
+    //         return book;
+    //     }   
+    // }
     
     giveBookByName(bookName) {
-        let book = this.books.find(item => item.name == bookName);
+        let book = this.books.find(item => item.name === bookName);
         if (book == undefined) {
             return null;
         } else {
