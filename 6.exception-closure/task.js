@@ -15,7 +15,6 @@ function validateCount(parcedNumber2) {
 		console.log('' + err.message);
         return err;
 	}
-<<<<<<< HEAD
 }
 
 class Triangle {
@@ -42,10 +41,15 @@ class Triangle {
     getArea() {
         const p = perimeter / 2;
         const square = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-        console.log(square);
-        return square;
+        console.log(+square.toFixed(3));
+        return +square.toFixed(3);
     }
 
-=======
->>>>>>> 3637e91067fc62b86bd56597354113e4f20539e5
+}
+
+function getTriangle(a,b,c) {
+    let triangle = new Triangle(1,2,3);
+    triangle.getPerimeter();
+    triangle.getArea();
+
 }
