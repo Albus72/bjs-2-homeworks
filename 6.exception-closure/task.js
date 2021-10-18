@@ -15,6 +15,7 @@ function validateCount(parcedNumber2) {
 		console.log('' + err.message);
         return err;
 	}
+<<<<<<< HEAD
 }
 
 class Triangle {
@@ -45,4 +46,6 @@ class Triangle {
         return square;
     }
 
+=======
+>>>>>>> 3637e91067fc62b86bd56597354113e4f20539e5
 }
