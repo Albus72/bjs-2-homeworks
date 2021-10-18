@@ -38,5 +38,11 @@ class Triangle {
         return perimeter;
     }
 
+    getArea() {
+        const p = perimeter / 2;
+        const square = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        console.log(square);
+        return square;
+    }
 
 }

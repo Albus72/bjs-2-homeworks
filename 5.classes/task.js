@@ -62,7 +62,7 @@ class DetectiveBook extends Book {
     }
 }
 
-class Library {
+class Library{
     constructor(name, books) {
         this.name = name;
         this.books = [];
@@ -101,14 +101,20 @@ class Library {
     //     }   
     // }
     
-    giveBookByName(bookName) {
+    giveBookByName (bookName) {
         let book = this.books.find(item => item.name === bookName);
-        if (book == undefined) {
-            return null;
-        } else {
-            let bookIndex = this.books.indexOf(book);
-            this.books.splice(bookIndex, 1)
-            return book;
-        }   
-    }
+          this.books.splice(this.books.indexOf(book), 1);
+          return book || null;
+        }
+    
+    // giveBookByName(bookName) {
+    //     let book = this.books.find(item => item.name === bookName);
+    //     if (book == undefined) {
+    //         return null;
+    //     } else {
+    //         let bookIndex = this.books.indexOf(book);
+    //         this.books.splice(bookIndex, 1)
+    //         return book;
+    //     }   
+    // }
 }
