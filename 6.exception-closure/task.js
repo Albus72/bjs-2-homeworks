@@ -47,6 +47,6 @@ function getTriangle(a,b,c) {
     try {
 		return triangle;
 	} catch (err) {
-		return {getPerimeter: "Ошибка! Треугольник не существует", getArea: "Ошибка! Треугольник не существует"};
+		return {triangle.getPerimeter("Ошибка! Треугольник не существует"), triangle.getArea("Ошибка! Треугольник не существует")};
 	}
 }
