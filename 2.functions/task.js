@@ -41,7 +41,6 @@ function makeWork(arrOfArr, func) {
 function worker2(arr) {
   let min = Infinity;
   let max = -Infinity;
-  let diff = 0;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] < min) {
       min = arr[i];
@@ -49,7 +48,6 @@ function worker2(arr) {
     if (arr[i] > max) {
       max = arr[i];
     }
-    diff = max - min;
   }
-  return diff;
+  return max - min;
 }
