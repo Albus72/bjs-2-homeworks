@@ -78,43 +78,84 @@ class Library{
         }    
         return this.books;
     }
-    
-    // addBook(book) {
-    //     if (book.state > 30) {
-    //         this.books.push(book);    
-    //     }    
-    //     return this.books;
-    // }
 
     findBookBy(type, value) {
         const book = this.books.find(item => item[type] === value);
         return book || null;
-      };
-    
-    // findBookBy(type, value) {
-    //     let key = String('item.' + type);
-    //     let book = this.books.find(item => eval(key) === value);
-    //     if (book == undefined) {
-    //         return null;
-    //     } else {
-    //         return book;
-    //     }   
-    // }
+    }
     
     giveBookByName (bookName) {
         let book = this.books.find(item => item.name === bookName);
           this.books.splice(this.books.indexOf(book), 1);
           return book || null;
-        }
-    
-    // giveBookByName(bookName) {
-    //     let book = this.books.find(item => item.name === bookName);
-    //     if (book == undefined) {
-    //         return null;
-    //     } else {
-    //         let bookIndex = this.books.indexOf(book);
-    //         this.books.splice(bookIndex, 1)
-    //         return book;
-    //     }   
-    // }
+    }
 }
+
+class Student {
+    constructor(name) {
+    this.name = name;
+    this.registerBook = [];
+    this.arrAverageBySubject =[];
+    }   
+
+    addMark(mark, subject) {
+        if (subject === "algebra") {
+            if (this.registerBook[`algebra`] === undefined) {
+                this.registerBook[`algebra`] = [];
+            if (mark >= 1 && mark <= 5) {
+                this.registerBook[`algebra`].push(mark);
+            } else {
+                return console.log("Ошибка, оценка должна быть числом от 1 до 5")
+            }
+            } else {
+                if (mark >= 1 && mark <= 5) {
+                this.registerBook[`algebra`].push(mark);
+            } else {
+                return console.log("Ошибка, оценка должна быть числом от 1 до 5")
+            }
+            }
+            return this.registerBook;
+        } else if (subject === "geometry") {
+            if (this.registerBook[`geometry`] === undefined) {
+                this.registerBook[`geometry`] = [];
+            if (mark >= 1 && mark <= 5) {
+                this.registerBook[`geometry`].push(mark);
+            } else {
+                return console.log("Ошибка, оценка должна быть числом от 1 до 5")
+            }
+            } else {
+                if (mark >= 1 && mark <= 5) {
+                this.registerBook[`geometry`].push(mark);
+            } else {
+                return console.log("Ошибка, оценка должна быть числом от 1 до 5")
+            }
+            }
+            return this.registerBook;
+        } else {
+            return console.log('Несуществующий предмет')
+        }
+    }
+
+    getAverageBySubject(subject) {
+        if (subject === "algebra") {
+            this.arrAverageBySubject = this.registerBook.algebra.reduce((sum, current) => sum + current, 0) / this.registerBook.algebra.length;
+            return console.log(this.arrAverageBySubject);
+        } else if (subject === "geometry") {
+            this.arrAverageBySubject = this.registerBook.geometry.reduce((sum, current) => sum + current, 0) / this.registerBook.geometry.length;
+            return console.log(this.arrAverageBySubject);
+        } else {
+            return console.log('Несуществующий предмет')
+        }
+    }
+}
+
+const student = new Student("Олег Никифоров");
+student.addMark(5, "algebra");
+student.addMark(5, "algebra");
+student.addMark(5, "geometry");
+student.addMark(4, "geometry");
+student.addMark(6, "geometry"); // "Ошибка, оценка должна быть числом от 1 до 5"
+student.getAverageBySubject("algebra"); // Средний балл по предмету geometry 4.5
+student.getAverageBySubject("biology"); // Несуществующий предмет
+student.getAverage(); // Средний балл по всем предметам 4.75
+student.exclude("Исключен за попытку подделать оценки");
