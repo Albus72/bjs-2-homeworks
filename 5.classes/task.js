@@ -94,8 +94,7 @@ class Library{
 class Student {
     constructor(name) {
     this.name = name;
-    this.registerBook = [];
-    this.arrAverage = [];
+    this.registerBook = {};
     }   
 
     addMark(mark, subject) {
@@ -110,20 +109,35 @@ class Student {
         return this.registerBook;
     }
 
+    // getAverageBySubject(subject) {
+    //     const marksForSubject = this.registerBook[subject]; // При использовании переменной работает быстрее
+    //     if (marksForSubject) {
+    //         return marksForSubject.reduce((sum, current) => sum + current, 0) / marksForSubject.length;
+    //     } else {
+    //         return ('Несуществующий предмет');
+    //     }
+    // }
+
     getAverageBySubject(subject) {
-        console.log(student.registerBook.includes(subject))
-        if (student.registerBook.includes(subject)) {
-            this.arrAverageBySubject = this.registerBook[subject].reduce((sum, current) => sum + current, 0) / this.registerBook[subject].length;
-            return this.arrAverage.push(this.arrAverageBySubject);
+        if (this.registerBook[subject]) {
+            return this.registerBook[subject].reduce((sum, current) => sum + current, 0) / this.registerBook[subject].length;
         } else {
             return ('Несуществующий предмет');
         }
     }
 
     getAverage() {
-        this.registerBook.forEach(student.getAverageBySubject(value));
-        this.Average = this.arrAverage.reduce((sum, current) => sum + current, 0) / this.arrAverage.length;
-        return this.Average;  
+        let marksCount = 0;
+        let marksSum = 0;
+        for (let subject in this.registerBook) {
+            marksCount += this.registerBook[subject].length;
+            marksSum += this.registerBook[subject].reduce((sum, current) => sum + current, 0);
+        }
+        return marksSum / marksCount;  
+    }
+
+    exclude() {
+        return ("Исключен за попытку подделать оценки")
     }
 }
 
@@ -134,6 +148,6 @@ student.addMark(5, "geometry");
 student.addMark(4, "geometry");
 student.addMark(6, "geometry"); // "Ошибка, оценка должна быть числом от 1 до 5"
 student.getAverageBySubject("geometry"); // Средний балл по предмету geometry 4.5
-student.getAverageBySubject("algebra"); // Несуществующий предмет
+student.getAverageBySubject("biology"); // Несуществующий предмет
 student.getAverage(); // Средний балл по всем предметам 4.75
 student.exclude("Исключен за попытку подделать оценки");
