@@ -9,20 +9,9 @@ Student.prototype.setSubject = function(subjectName) {
 }
 
 Student.prototype.addMark = function(mark) {
-  if ( this.marks === undefined) {
-    this.marks = [mark];
-  } else {
-    this.marks.push(mark);
-  }
+  if ( !this.marks ) this.marks = [mark];
+  else this.marks.push(mark);
 }
-
-// Student.prototype.addMarks = function(...mark) {
-//   if ( this.marks === undefined) {
-//     this.marks = [...mark];
-//   } else {
-//     this.marks.push(...mark);
-//   }
-// }
 
 Student.prototype.addMarks = function (...marks) {
     if( !this.marks ) this.marks = marks; 
