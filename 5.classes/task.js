@@ -127,13 +127,17 @@ class Student {
     }
 
     getAverage() {
-        let marksCount = 0;
-        let marksSum = 0;
-        for (let subject in this.registerBook) {
-            marksCount += this.registerBook[subject].length;
-            marksSum += this.registerBook[subject].reduce((sum, current) => sum + current, 0);
-        }
-        return marksSum / marksCount;  
+        if (Object.keys(this.registerBook).length > 0) {
+            let marksCount = 0;
+            let marksSum = 0;
+            for (let subject in this.registerBook) {
+                marksCount += this.registerBook[subject].length;
+                marksSum += this.registerBook[subject].reduce((sum, current) => sum + current, 0);
+            }
+            return marksSum / marksCount; 
+        } else {
+            return ('Нет оценок ни по одному предмету');
+        } 
     }
 
     exclude() {
