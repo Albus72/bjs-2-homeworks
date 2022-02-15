@@ -35,11 +35,11 @@ class Triangle {
 }
 
 function getPerimeter() {
-    return perimeterFromFun = "Ошибка! Треугольник не существует";
+    return ("Ошибка! Треугольник не существует");
 }
 
 function getArea() {
-    return squareFromFun = "Ошибка! Треугольник не существует";
+    return ("Ошибка! Треугольник не существует");
 }
 
 function getTriangle(a,b,c) {

@@ -5,10 +5,10 @@ class AlarmClock {
 	};
 	addClock (time, callback, id){
       if (id === undefined) {
-        throw new Error("не передан параметр id");
+        throw new Error('Не указан id будильника');
       };
       if (this.alarmCollection.find(item => item.id === id)) {
-        console.error('будильник с таким id уже существует')
+        console.error('Будильник с таким id уже существует')
       }
       else {this.alarmCollection.push({id, time, callback})};
 	};
