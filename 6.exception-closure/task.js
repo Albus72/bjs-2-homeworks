@@ -8,7 +8,7 @@ function parseCount(parcedNumber) {
 
 function validateCount(parcedNumber) {
 	try {
-		return tempVar = parseCount(parcedNumber);
+		return parseCount(parcedNumber);
 	} catch (err) {
 		console.log('' + err.message);
         return err;
@@ -30,7 +30,8 @@ class Triangle {
     }
 
     getArea() {
-        return Number((Math.sqrt((this.getPerimeter() / 2) * ((this.getPerimeter() / 2) - this.sideA) * ((this.getPerimeter() / 2) - this.sideB) * ((this.getPerimeter() / 2) - this.sideC))).toFixed(3));
+        let halfPerimeter = this.getPerimeter() / 2;
+        return Number((Math.sqrt(halfPerimeter * (halfPerimeter - this.sideA) * (halfPerimeter - this.sideB) * (halfPerimeter - this.sideC))).toFixed(3));
     }
 }
 
@@ -44,7 +45,7 @@ function getArea() {
 
 function getTriangle(a,b,c) {
     try {
-        return triangle = new Triangle(a,b,c);
+        return new Triangle(a,b,c);
 	} catch (err) {
         return {getPerimeter, getArea};
 	}
