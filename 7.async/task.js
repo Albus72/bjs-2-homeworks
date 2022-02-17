@@ -17,9 +17,7 @@ class AlarmClock {
 
   removeClock(id) {
     let lengthBefore = this.alarmCollection.length;
-    this.alarmCollection = this.alarmCollection.filter(
-      (item) => item.id !== id
-    );
+    this.alarmCollection = this.alarmCollection.filter((item) => item.id !== id);
     let lengthAfter = this.alarmCollection.length;
     return lengthBefore !== lengthAfter;
   }
@@ -36,14 +34,14 @@ class AlarmClock {
       }
     };
     if (this.timerId === null) {
-      // return (this.timerId = setInterval(() => {
+      return this.timerId = setInterval(() => {this.alarmCollection.forEach(checkClock)}, 1000);
+      // return tihs.timerId = setInterval(() => this.alarmCollection.forEach(checkClock), 1000); // а без фигурных скобок не работает хоть и действие одно
+
+      // return (this.timerId = setInterval(() => {                 // обход всех будильников в цикле
       //   for (let i = 0; i < this.alarmCollection.length; i++) {
       //     checkClock(this.alarmCollection[i]);
       //   }
       // }, 1000));
-
-      return tihs.timerId = setInterval(() => this.alarmCollection.forEach(checkClock), 1000);
-
     }
   }
 
@@ -65,19 +63,20 @@ class AlarmClock {
 
   clearAlarms() {
     this.stop();
-    this.alarmCollection.length = 0;
+    this.alarmCollection = [];
+    // this.alarmCollection.length = 0; // Это тоже работает как обнуление всех будильников
   }
 }
 
 function testCase() {
   let alarmClock = new AlarmClock();
-  alarmClock.addClock("20:02", () => console.log("Пора вставать"), 1);
-  alarmClock.addClock("20:03", () => {
-      console.log("Давай, вставай уже!");
+  alarmClock.addClock("00:22", () => console.log("Подъем, труба зовет!"), 1);
+  alarmClock.addClock("00:23", () => {
+      console.log("Вставай!!! Нас ждут великие дела!");
       alarmClock.removeClock(2);
     }, 2);
-  alarmClock.addClock("20:04", () => {
-      console.log("Вставай!!! Нас ждут великие дела!");
+  alarmClock.addClock("00:24", () => {
+      console.log("Работа сама себя не сделает!!!");
       alarmClock.stop();
       alarmClock.clearAlarms(); 
       alarmClock.printAlarms();
