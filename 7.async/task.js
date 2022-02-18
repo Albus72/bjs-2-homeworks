@@ -34,8 +34,7 @@ class AlarmClock {
       }
     };
     if (this.timerId === null) {
-      return this.timerId = setInterval(() => {this.alarmCollection.forEach(checkClock)}, 1000);
-      // return tihs.timerId = setInterval(() => this.alarmCollection.forEach(checkClock), 1000); // а без фигурных скобок не работает хоть и действие одно
+      return this.timerId = setInterval(() => this.alarmCollection.forEach(checkClock), 1000);
 
       // return (this.timerId = setInterval(() => {                 // обход всех будильников в цикле
       //   for (let i = 0; i < this.alarmCollection.length; i++) {
